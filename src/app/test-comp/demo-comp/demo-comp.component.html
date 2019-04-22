@@ -1,0 +1,91 @@
+<div class="app-body" >
+
+  <!-- ############ PAGE START-->
+  <div class="p-a white lt box-shadow " style="padding-top: 4.7rem !important;">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4 class="mb-0 _300">Welcome to Flatkit</h4>
+        <small class="text-muted">Bootstrap <strong>4</strong> Web App Kit with AngularJS</small>
+      </div>
+      <div class="col-sm-6 text-sm-right">
+        <div class="m-y-sm">
+          <span class="m-r-sm">Start manage:</span>
+          <div class="btn-group dropdown">
+            <button class="btn white btn-sm ">Projects</button>
+            <button class="btn white btn-sm dropdown-toggle" data-toggle="dropdown"></button>
+            <div class="dropdown-menu dropdown-menu-scale pull-right">
+              <a class="dropdown-item" href="">Members</a>
+              <a class="dropdown-item" href="">Tasks</a>
+              <a class="dropdown-item" href="">Inbox</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item">Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="padding">
+
+    <div class="box" *ngIf="jsonRes!==undefined">
+      <div class="box-header b-b">
+        <h3>Form Wizard <span class="text-right right float-right">{{timedata}}</span></h3>
+
+      </div>
+      <div class="box-body">
+        <form ui-jp="parsley" id="form" novalidate="">
+          <div id="rootwizard" >
+            <ul class="nav nav-pills clearfix m-b option" style="overflow-x:auto">
+
+
+              <li class="nav-item" *ngFor="let item of qusOption"><a class="nav-link" href="#tab{{item}}" data-toggle="tab" aria-expanded="false">{{item}}</a></li>
+
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane" id="tab{{i+1}}" aria-expanded="false" *ngFor="let item of jsonRes.results;let i = index">
+
+                <div class="row" (mousemove)="movefunciton(i)" (mouseleave)="leavefunciton()">
+
+                  <div class="col-sm-8">
+                    <label>{{i+1}}) <span [innerHTML]="item.question"></span></label>
+                    <p>
+                    <label class="radio-inline" *ngFor="let itemoption of item.incorrect_answers;let ioption = index" style="margin-right: 10px">
+                      <input type="radio" name="inlineRadioOptions{{i+1}}" value="{{itemoption}}" (click)="optionchange(i,itemoption)" class="has-value"><span style="margin-left: 6px;cursor: pointer" [innerHTML]="itemoption"></span>
+                    </label>
+                    </p>
+                  </div>
+                  <div class="col-sm-4 ">
+
+                    <span class="label-lg blue"><b class=" b-primary"></b>{{item.category}}</span><br>
+
+                    <span class="label-xs green" *ngIf="item.difficulty==='easy'"><b class=" b-primary"></b>Type : {{item.type}} Difficulty : {{item.difficulty}}</span>
+                    <span class="label-xs yellow" *ngIf="item.difficulty==='medium'"><b class=" b-primary"></b>Type : {{item.type}} Difficulty : {{item.difficulty}}</span>
+                    <span class="label-xs red" *ngIf="item.difficulty==='hard'"><b class=" b-primary"></b>Type : {{item.type}} Difficulty : {{item.difficulty}}</span>
+
+                    <br>
+                    <span class="label-xs red" *ngIf="durationdisplay[i]==='Time for : 00:00'"><b class=" b-primary">{{durationdisplay[i]}}</b></span>
+                    <span class="label-xs " *ngIf="durationdisplay[i]!=='Time for : 00:00'"><b class="">{{durationdisplay[i]}}</b></span>
+
+
+                  </div>
+
+                </div>
+              </div>
+
+              <ul class="pager wizard">
+                <li class="previous first disabled" style="display:none;"><a>First</a></li>
+                <li class="previous disabled"><a>Previous</a></li>
+                <li class="next last" style="display:none;"><a >Last</a></li>
+                <li class="next"><a>Next</a></li>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ############ PAGE END-->
+
+</div>

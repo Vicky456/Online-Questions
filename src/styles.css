@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+.lightMod{
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+}
+
+.darkMod {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.dark .white, .dark .box {
+  background-color: #212121;
+}
+
+.dark {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000;
+}
+
+.dark .lightMod, .dark .lightMod{
+  background-color: #000000;
+  color: white;
+}
+
+
+
+/* width */
+.option::-webkit-scrollbar {
+  width: 0px;
+}
+
+
+.tab-pane{
+  margin-bottom: 25px;
+}
